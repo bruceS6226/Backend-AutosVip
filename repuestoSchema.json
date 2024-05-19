@@ -1,0 +1,218 @@
+{
+  "id_repuesto": {
+    "type": "VARCHAR(30)",
+    "allowNull": false,
+    "primaryKey": true,
+    "defaultValue": null
+  },
+  "nombre_repuesto": {
+    "type": "VARCHAR(100)",
+    "allowNull": false,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "marca_repuesto": {
+    "type": "VARCHAR(50)",
+    "allowNull": false,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "sistema_vehiculo": {
+    "type": "VARCHAR(60)",
+    "allowNull": false,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "costo_ultima_compra": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "costo_promedio": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "costo_lifo": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "costo_fifo": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "ultimo_costo_venta": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "ultimo_precio_venta": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "cantidad_inventario": {
+    "type": "INT",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "dias_de_stock": {
+    "type": "INT",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "rotacion_de_producto": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "cantidad_minima": {
+    "type": "INT",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "cantidad_maxima": {
+    "type": "INT",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "mad": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "pedido_de_reposicion": {
+    "type": "INT",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "lead_time_de_pedido": {
+    "type": "INT",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "lead_time_de_entrega": {
+    "type": "INT",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "lead_time_de_ancionalizaicon": {
+    "type": "INT",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "clasificacion_seane": {
+    "type": "VARCHAR(50)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "valor_seae": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "advalorem": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "iva": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "seguro_internacional": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "seguro_nacional": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "fondinfa": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "almacenera": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "costo_proveedor_exterior": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "costo_puerto_de_origen": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "costo_puerto_de_destino": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "precio_PVP": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "medida_1": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "medida_2": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "medida_3": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  },
+  "medida_4": {
+    "type": "DECIMAL(10,2)",
+    "allowNull": true,
+    "primaryKey": false,
+    "defaultValue": null
+  }
+}
