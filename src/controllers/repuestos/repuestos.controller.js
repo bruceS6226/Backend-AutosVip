@@ -152,58 +152,67 @@ const obtenerRepuesto = async (req, res) => {
 const buscarRepuestos = async (req, res) => {
     try {
         const { textoBuscar } = req.params;
+
         if (textoBuscar) {
-            var condicionesDeBusqueda;
+            const palabrasComunes = [
+              'de', 'para', 'y', 'la', 'el', 'es', 'un', 'una', 'en', 'con', 'por', 'a', 'los', 
+              'las', 'al', 'del', 'se', 'lo', 'como', 'más', 'o', 'pero', 'sus', 'le', 'ha', 
+              'me', 'si', 'sin', 'sobre', 'este', 'ya', 'entre', 'cuando', 'todo', 'esta', 
+              'ser', 'son', 'dos', 'también', 'fue', 'había', 'muy', 'hasta', 'desde', 'nos', 
+              'durante', 'uno', 'ni', 'ese', 'contra', 'sí', 'porque', 'qué', 'está', 'ante', 
+              'e', 'les', 'estos', 'algunos', 'cual', 'poco', 'ella', 'esto', 'esos', 'esas', 
+              'algunas', 'algo', 'nosotros', 'vosotros', 'vosotras', 'ellos', 'ellas', 'míos', 
+              'tuyo', 'tus', 'mías', 'tuyas', 'nuestros', 'vuestra', 'vuestros', 'vuestro', 
+              'mío', 'mi', 'nuestra', 'nuestras', 'nuestros', 'tuyo', 'tuyos', 'vuestro', 
+              'vuestra', 'vuestros', 'vuestras'
+          ]; // Lista de palabras no claves
             const atributos = Object.keys(Repuesto.rawAttributes);
-            const palabras = textoBuscar.split(' ').filter(palabra => palabra.trim() !== '');
-            condicionesDeBusqueda = palabras.map(palabra => ({
+            const palabras = textoBuscar.split(' ')
+                .filter(palabra => palabra.trim() !== '' && !palabrasComunes.includes(palabra.toLowerCase()));
+            const condicionesDeBusqueda = palabras.map(palabra => ({
                 [Sequelize.Op.or]: atributos.map(atributo => ({
                     [atributo]: { [Sequelize.Op.like]: `%${palabra}%` }
                 }))
             }));
+
             const repuestosEncontrados = await Repuesto.findAll({
                 where: {
                     [Sequelize.Op.and]: condicionesDeBusqueda
                 }
             });
+
             const repuestosEncontradosPorPalabras = await Repuesto.findAll({
                 where: {
                     [Sequelize.Op.or]: condicionesDeBusqueda
                 }
             });
-            if (repuestosEncontrados && repuestosEncontradosPorPalabras) {
+
+            if (repuestosEncontrados.length > 0 || repuestosEncontradosPorPalabras.length > 0) {
                 res.status(202).json({
                     repuestos: repuestosEncontrados,
                     repuestosSugeridos: repuestosEncontradosPorPalabras
-                })
+                });
             } else {
-                if (!repuestosEncontrados && repuestosEncontradosPorPalabras) {
-                    res.status(202).json({
-                        repuestos: [],
-                        repuestosSugeridos: repuestosEncontradosPorPalabras
-                    })
-                }
-                if (!repuestosEncontrados && !repuestosEncontradosPorPalabras) {
-                    res.status(202).json({
-                        repuestos: [],
-                        repuestosSugeridos: []
-                    })
-                }
+                res.status(202).json({
+                    repuestos: [],
+                    repuestosSugeridos: []
+                });
             }
         } else {
             const todosRepuestos = await Repuesto.findAll();
             res.status(202).json({
                 repuestos: todosRepuestos,
-                repuestosSugeridos: [],
+                repuestosSugeridos: []
             });
         }
     } catch (error) {
         res.status(500).json({
             msg: 'Ha ocurrido un error al intentar buscar repuestos',
-            error: error
+            error: error.message
         });
     }
 }
+
 const buscarPocosRepuestos = async (req, res) => {
     try {
         const { textoBuscar, inicio, fin } = req.params;

@@ -7,6 +7,7 @@ const { obtenerRelacionesSistemasVehiculos } = require('../controllers/sistemas_
 const { obtenerCategoriasDentroSistemasVehiculo } = require('../controllers/sistemas_vehiculo/categorias.dentro.sistemas.vehiculo.controller');
 const { obtenerRepuestosCategoriasDentroSistemasVehiculo, obtenerRepuestosPorCategoriaDentroSistemasVehiculo } = require('../controllers/sistemas_vehiculo/repuestos.categorias.sistemas.controller');
 const { obtenerServicio, obtenerServicios } = require('../controllers/servicios/servicios.controller');
+const { agregarRepuesto, eliminarRepuesto } = require('../controllers/repuestos/crearRepuesto');
 
 
 const router = Router();
@@ -23,6 +24,9 @@ router.get('/buscar-pocos-repuestos/:inicio/:fin/:textoBuscar?', buscarPocosRepu
 router.get('/buscar-cantidad-repuestos/:textoBuscar?', buscarCantidadRepuestos)
 //router.post('/crear-repuesto', crearRepuesto)
 router.patch('/guardar-repuestos-excel', crearRepuesto)
+// crear repuesto
+router.post('/repuesto', agregarRepuesto)
+router.delete('/repuesto/:id_repuesto', eliminarRepuesto)
 
 router.get('/categorias_dentro_marcas_vehiculo', obtenerCategoriasDentroMarcasVehiculo)
 router.get('/repuestos-categorias-dentro-marcas-vehiculo', obtenerRepuestosCategoriasDentroMarcasVehiculo)
